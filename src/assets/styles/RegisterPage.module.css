@@ -1,0 +1,40 @@
+.registerContainer {
+  max-width: 500px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 8px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.formGroup {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+label {
+  flex-basis: 30%;
+  margin-right: 10px;  /* 라벨과 입력 필드 사이의 공간 */
+}
+
+input, select, button {
+  flex-basis: 70%;
+  margin: 8px;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+button {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  width: auto;  /* 버튼 너비 조정 */
+}

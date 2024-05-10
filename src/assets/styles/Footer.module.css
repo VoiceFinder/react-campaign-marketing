@@ -1,0 +1,13 @@
+.footerContainer {
+  background-color: #2c3e50;
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  width: 100%;
+  margin-top: auto;  /* 중요: 컨텐츠가 부족할 때 푸터를 하단에 고정 */
+}
+
+
+.footerText {
+  font-size: 0.9rem;
+}

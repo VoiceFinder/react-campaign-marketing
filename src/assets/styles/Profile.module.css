@@ -1,0 +1,60 @@
+.container {
+  max-width: 600px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+}
+
+.profileHeader {
+  text-align: center;
+}
+
+.profileImage {
+  width: 120px;
+  height: 120px;
+  border-radius: 60px; /* 원형 이미지 */
+  object-fit: cover;
+  display: block;
+  margin: 10px auto;
+}
+
+.profileInfo {
+  margin-top: 20px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.profileInfo p {
+  margin: 10px 0;
+}
+
+.profileInfo strong {
+  color: #555;
+  margin-right: 5px;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+}
+
+.alert {
+  color: red;
+  font-size: 16px;
+  margin-top: 20px;
+}
+
+.editButton {
+  background-color: #007BFF;
+  color: white;
+  border: none;
+  margin-right: 5px;
+  float: right;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-top: 10px;
+}
