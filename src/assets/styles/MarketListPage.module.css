@@ -1,0 +1,75 @@
+.marketContainer {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 20px;
+  background-color: white;
+  border-radius: 8px;
+}
+
+.marketList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+.marketCard {
+  flex: 1 1 calc(33% - 20px);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: #f9f9f9;
+  padding: 20px;
+  transition: transform 0.3s;
+}
+
+.marketCard:hover {
+  transform: scale(1.02);
+}
+
+.marketCard img {
+  max-width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-bottom: 1px solid #ddd;
+}
+
+.marketCard h2 {
+  margin: 10px 0;
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.marketCard p {
+  margin: 5px 0;
+  color: #555;
+}
+
+.marketCard .keywords {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.marketCard .keyword {
+  background-color: #eee;
+  border-radius: 5px;
+  padding: 5px 10px;
+  font-size: 0.9rem;
+}
+
+.registerButton {
+  display: block;
+  margin: 20px auto;
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  text-align: center;
+}
+
+.registerButton:hover {
+  background-color: #45a049;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import { registerUser } from '../services/api';
+import AuthService from '../services/AuthService';
 import styles from '../assets/styles/RegisterPage.module.css'; // 스타일 시트 임포트
 
 function RegisterPage() {
@@ -29,7 +29,7 @@ function RegisterPage() {
         formData.append('imageUrl', imageFile);
 
         try {
-          const data = await registerUser(formData);
+          const data = await AuthService.registerUser(formData);
           console.log('Registration successful', data);
           alert("Registration successful");
           navigate('/login'); // 성공 시 로그인 페이지로 리다이렉트

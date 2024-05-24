@@ -1,7 +1,6 @@
 import React, { createContext, useContext, useState, useEffect } from 'react';
-import { loginUser, logoutUser } from '../services/api'; 
+import axiosInstance from '../services/AxiosConfig'
 import Cookies from 'js-cookie';
-
 
 const AuthContext = createContext(null);
 
@@ -11,17 +10,20 @@ export const AuthProvider = ({ children }) => {
   // 로그인
   const login = async (email, password) => {
       try {
-          await loginUser({ email, password });
+          const response = await axiosInstance.post('/users/login', {email, password});
+          console.log(response);
           setIsAuthenticated(true);
+          return true;
       } catch (error) {
           console.error('Login error:', error);
+          return false;
       }
   };
 
   // 로그아웃
   const logout = async () => {
       try {
-          await logoutUser();
+          Cookies.remove('Authorization'); // 쿠키에서 토큰 제거
           setIsAuthenticated(false);
       } catch (error) {
           console.error('Logout error:', error);

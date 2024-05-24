@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getUserInfo, updateUserInfo } from '../services/api';
+import UserService from '../services/UserService';  
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/styles/EditProfile.module.css';
 
@@ -23,8 +23,8 @@ function EditProfile() {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const data = await getUserInfo();
-                setUserInfo({
+              const data = await UserService.getUserInfo();
+              setUserInfo({
                     ...data,
                     customJob: data.job,
                     customInterest: data.interest,
@@ -57,8 +57,8 @@ function EditProfile() {
         formData.append('imageUrl', imageFile);
       
         try {
-            await updateUserInfo(formData);
-            navigate('/profile');
+          await UserService.updateUserInfo(formData);  
+          navigate('/profile');
         } catch (error) {
             console.error('Failed to update user info:', error);
         }

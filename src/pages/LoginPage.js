@@ -11,13 +11,11 @@ function LoginPage() {
 
   const handleSubmit = async (event) => {
       event.preventDefault();
-      try {
-          const data = await login(email, password);
-          console.log('Login successful:', data);
-          navigate('/'); // 성공 시 대시보드 페이지로 리다이렉트
-      } catch (error) {
-          console.error('Login failed:', error);
-          alert("Login failed");
+      const data = await login(email, password);
+      if (data) {
+        navigate('/'); 
+      } else {
+        alert("Login failed");
       }
   };
 

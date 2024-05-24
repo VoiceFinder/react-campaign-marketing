@@ -1,0 +1,134 @@
+.dashboardContainer {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+
+.mainContent {
+  display: flex;
+  justify-content: space-between;
+  flex-grow: 1;
+}
+
+.marketInfoSection {
+  flex: 1;
+  margin-right: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.campaignInfoSection {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.marketInfoCard, .campaignSection {
+  margin-bottom: 20px;
+}
+
+.marketInfoCard img {
+  width: fit-content;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.campaignList {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.campaignCard {
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+.campaignCard p, h4 {
+  margin: 5px 0;
+}
+
+.campaignCard img {
+  width: fit-content;
+  height: 150px;
+  border-radius: 5px;
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+}
+
+.ongoing {
+  background-color: #4CAF50;
+}
+
+.ended {
+  background-color: #f44336;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pageButton {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.createButton, .editButton {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.analyticsSection {
+  margin-top: 20px;
+}
+
+.analyticsCard {
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.editButton {
+  margin: 10px 0;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+}

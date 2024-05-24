@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { getUserInfo } from '../services/api';
+import UserService from '../services/UserService';  
 import { useNavigate } from 'react-router-dom';
 import styles from '../assets/styles/Profile.module.css'; 
 import defaultProfileImage from '../assets/images/default_profile_image.png';
@@ -11,8 +11,8 @@ function Profile() {
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-                const data = await getUserInfo();
-                setUserInfo(data);
+              const data = await UserService.getUserInfo();  
+              setUserInfo(data);
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
             }
