@@ -26,10 +26,33 @@ label {
 
 input, select, textarea, button {
   flex-basis: 70%;
-  margin: 8px;
   padding: 8px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+textarea {
+  margin: 5px;
+}
+
+.findAddress {
+  flex-basis: 70%;
+  display: flex;
+}
+
+.findAddress input {
+  margin-bottom: 5px;
+}
+
+.addressContainer input {
+  margin-left: 5px;
+}
+
+.addressContainer {
+  flex-basis: 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 button {
@@ -41,4 +64,21 @@ button {
 
 button:hover {
   background-color: #45a049;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggleContainer {
+  position: relative;
+}
+
+.toggleButton {
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
 }

@@ -26,16 +26,14 @@ function EditProfile() {
               const data = await UserService.getUserInfo();
               setUserInfo({
                     ...data,
-                    customJob: data.job,
-                    customInterest: data.interest,
+                    customJob: data.job || '',
+                    customInterest: data.interest || '',
                 });
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
             }
         };
         fetchUserInfo();
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-
     }, []);
 
     const handleChange = (e) => {
@@ -82,7 +80,7 @@ function EditProfile() {
                 </label>
                 <label>
                     Gender:
-                    <select name="gender" value={userInfo.gender} onChange={handleChange}>
+                    <select name="gender" value={userInfo.gender || ''} onChange={handleChange}>
                       <option value="">Select Gender</option>
                       <option value="Male">Male</option>
                       <option value="Female">Female</option>
@@ -91,19 +89,19 @@ function EditProfile() {
                 </label>
                 <label>
                     Birth Date:
-                    <input type="date" name="birthDate" value={userInfo.birthDate} onChange={handleChange} />
+                    <input type="date" name="birthDate" value={userInfo.birthDate || ''} onChange={handleChange} />
                 </label>
                 <label>
                     Blog URL:
-                    <input type="text" name="blogUrl" value={userInfo.blogUrl} onChange={handleChange} />
+                    <input type="text" name="blogUrl" value={userInfo.blogUrl || ''} onChange={handleChange} />
                 </label>
                 <label>
                     Bio:
-                    <textarea name="bio" value={userInfo.bio} onChange={handleChange}></textarea>
+                    <textarea name="bio" value={userInfo.bio || ''} onChange={handleChange}></textarea>
                 </label>
                 <label>
                     Activity Area:
-                    <select name="activityArea" value={userInfo.activityArea} onChange={handleChange}>
+                    <select name="activityArea" value={userInfo.activityArea || ''} onChange={handleChange}>
                         <option value="">Select activityArea</option>
                         <option value="Seoul">Seoul</option>
                         <option value="Busan">Busan</option>
@@ -116,27 +114,25 @@ function EditProfile() {
                 </label>
                 <label>
                     Job:
-                    <select name="job" value={userInfo.job} onChange={handleChange}>
+                    <select name="job" value={userInfo.job || ''} onChange={handleChange}>
                         <option value="">Select job</option>
                         <option value="Software Engineer">Software Engineer</option>
                         <option value="Designer">Designer</option>
                         <option value="Teacher">Teacher</option>
                         <option value="Other">Other</option>
                     </select>
-                    <input type="text" name="customJob" placeholder='직접입력' value={userInfo.customJob} onChange={handleChange} />
-                    
+                    <input type="text" name="customJob" placeholder='직접입력' value={userInfo.customJob || ''} onChange={handleChange} />
                 </label>
                 <label>
                     Interest:
-                    <select name="interest" value={userInfo.interest} onChange={handleChange}>
+                    <select name="interest" value={userInfo.interest || ''} onChange={handleChange}>
                         <option value="">Select interest</option>
                         <option value="Programming">Programming</option>
                         <option value="Design">Design</option>
                         <option value="Education">Education</option>
                         <option value="Other">Other</option>
                     </select>
-                    <input type="text" name="customInterest" placeholder='직접입력' value={userInfo.customInterest} onChange={handleChange} />
-                    
+                    <input type="text" name="customInterest" placeholder='직접입력' value={userInfo.customInterest || ''} onChange={handleChange} />
                 </label>
                 <button type="submit">Update Profile</button>
             </form>

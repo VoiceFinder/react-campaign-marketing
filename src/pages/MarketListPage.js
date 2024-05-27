@@ -38,7 +38,7 @@ function MarketListPage() {
                             <h2>{market.companyName}</h2>
                             <p><strong>Business Type:</strong> {market.businessType}</p>
                             <p><strong>Phone:</strong> {market.phone}</p>
-                            <p><strong>Address:</strong> {market.address}</p>
+                            <p><strong>Address:</strong> {market.address} {market.detailAdress}</p>
                             <p><strong>Description:</strong> {market.description}</p>
                             <div className={styles.keywords}>
                                 {market.keywords.map((keyword, index) => (

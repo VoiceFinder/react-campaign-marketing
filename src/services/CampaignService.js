@@ -1,12 +1,12 @@
 import axiosInstance from './AxiosConfig';
 
 class CampaignService {
-  static async getCampaignsByMarketId(marketId, page, size) {
-    const response = await axiosInstance.get(`/markets/${marketId}/campaigns`, {
-        params: { page, size }
-    });
-    return response.data;
-}
+    static async getCampaignsByMarketId(marketId, page, size) {
+      const response = await axiosInstance.get(`/markets/${marketId}/campaigns`, {
+          params: { page, size }
+      });
+      return response.data;
+    }
 
 
     static async createCampaign(formData) {

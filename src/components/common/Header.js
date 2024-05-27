@@ -17,9 +17,10 @@ function Header() {
       <h2><Link to="/">Home</Link></h2>
       <nav>
         <ul className={styles.navList}>
-          <li className={styles.navItem}><Link to="/markets" className={styles.navLink}>Markets</Link></li>
+          
           {isAuthenticated ? (
             <>
+              <li className={styles.navItem}><Link to="/markets" className={styles.navLink}>Markets</Link></li>
               <li className={styles.navItem}><Link to="/profile" className={styles.navLink}>Profile</Link></li>
               <li className={styles.navItem}>
                 <button onClick={handleLogout} className={styles.navButton}>Logout</button>

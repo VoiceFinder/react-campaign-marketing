@@ -10,6 +10,7 @@ function MarketRegistrationForm() {
     const [companyPhotos, setCompanyPhotos] = useState([]);
     const [phone, setPhone] = useState('');
     const [address, setAddress] = useState('');
+    const [detailAddress, setDetailAddress] = useState('');
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
     const [fileNames, setFileNames] = useState([]);
@@ -33,7 +34,8 @@ function MarketRegistrationForm() {
             companyName,
             businessType,
             phone,
-            address,
+            address: address,
+            detailAddress: detailAddress,
             description,
             keywords: keywordList
         };
@@ -53,6 +55,35 @@ function MarketRegistrationForm() {
             console.error('Failed to register market:', error);
             alert('Failed to register market.');
         }
+    };
+
+    const handleAddressClick = () => {
+        new window.daum.Postcode({
+            oncomplete: function (data) {
+                var addr = ''; // 주소 변수
+                var extraAddr = ''; // 참고항목 변수
+
+                if (data.userSelectedType === 'R') { 
+                    addr = data.roadAddress;
+                } else { 
+                    addr = data.jibunAddress;
+                }
+
+                if (data.userSelectedType === 'R') {
+                    if (data.bname !== '' && /[동|로|가]$/g.test(data.bname)) {
+                        extraAddr += data.bname;
+                    }
+                    if (data.buildingName !== '' && data.apartment === 'Y') {
+                        extraAddr += (extraAddr !== '' ? ', ' + data.buildingName : data.buildingName);
+                    }
+                    if (extraAddr !== '') {
+                        extraAddr = ' (' + extraAddr + ')';
+                    }
+                }
+
+                setAddress(`${data.zonecode} ${addr} ${extraAddr}`);
+            }
+        }).open();
     };
 
     return (
@@ -77,7 +108,13 @@ function MarketRegistrationForm() {
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="address">Address</label>
-                    <input type="text" value={address} onChange={(e) => setAddress(e.target.value)} placeholder="Address" required />
+                    <div className={styles.addressContainer}>
+                        <div className={styles.findAddress}>
+                          <input type="text" value={address} placeholder="Address" readOnly />
+                          <input type="button" onClick={handleAddressClick} value="Find Address" />
+                        </div>
+                        <input type="text" value={detailAddress} onChange={(e) => setDetailAddress(e.target.value)} placeholder="Detail Address" required />
+                    </div>
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="description">Description</label>

@@ -37,6 +37,19 @@ function MarketManagePage() {
         navigate(`/market/${marketId}/edit`);
     };
 
+    const handleDeleteMarket = async () => {
+        if (window.confirm('Are you sure you want to delete this market?')) {
+            try {
+                await MarketService.deleteMarket(marketId);
+                alert('Market deleted successfully!');
+                navigate('/markets');
+            } catch (error) {
+                console.error('Failed to delete market:', error);
+                alert('Failed to delete market.');
+            }
+        }
+    };
+
     const handleCreateCampaign = () => {
         navigate(`/market/${marketId}/create-campaign`);
     };
@@ -54,7 +67,11 @@ function MarketManagePage() {
             {market && (
                 <div className={styles.mainContent}>
                     <div className={styles.marketInfoSection}>
-                        <MarketInfo market={market} onEdit={handleEditMarket} />
+                        <MarketInfo 
+                            market={market} 
+                            onEdit={handleEditMarket} 
+                            onDelete={handleDeleteMarket} 
+                        />
                     </div>
 
                     <div className={styles.campaignInfoSection}>

@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MarketService from '../services/MarketService';
 import CampaignService from '../services/CampaignService';
 import styles from '../assets/styles/HomePage.module.css';
-import backgroundImg from '../assets/images/default_background_image.png'
+import backgroundImg from '../assets/images/default_background_image.png';
 
 function HomePage() {
     const [market, setMarket] = useState(null);
@@ -11,20 +11,25 @@ function HomePage() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const fetchMarketDetails = async () => {
+        const fetchMarketAndCampaignDetails = async () => {
             try {
-                const marketData = await MarketService.getMarketById(1); // Replace with actual marketId
-                setMarket(marketData);
-                
-                const campaignData = await CampaignService.getCampaignsByMarketId(1, 0, 3); // Fetch 3 recent campaigns
+                const marketData = await MarketService.fetchMarkets();
+                const selectedMarket = marketData.content[0];
+                setMarket(selectedMarket);
+
+                const campaignData = await CampaignService.getCampaignsByMarketId(selectedMarket.id, 0, 3);
                 setCampaigns(campaignData.content || []);
             } catch (error) {
                 console.error('Failed to fetch market and campaign details:', error);
             }
         };
 
-        fetchMarketDetails();
+        fetchMarketAndCampaignDetails();
     }, []);
+
+    const handleMarketClick = (marketId) => {
+        navigate(`/market/${marketId}/manage`);
+    };
 
     const handleCampaignClick = (campaignId) => {
         navigate(`/campaign/${campaignId}`);
@@ -33,7 +38,7 @@ function HomePage() {
     return (
         <div className={styles.homeContainer}>
             {market ? (
-                <div className={styles.marketInfo}>
+                <div className={styles.marketInfo} onClick={() => handleMarketClick(market.id)}>
                     <img src={(market.imageUrls && market.imageUrls[0]) || backgroundImg} alt={market.companyName} className={styles.marketImage} />
                     <div className={styles.marketOverlay}>
                         <h1>{market.companyName}</h1>

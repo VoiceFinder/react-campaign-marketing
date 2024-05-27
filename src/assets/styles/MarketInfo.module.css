@@ -1,0 +1,71 @@
+.marketInfoCard img {
+  width: 100%;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.toggleContainer {
+  position: relative;
+}
+
+.toggleButton {
+  background: none;
+  color: #444;
+  border: none;
+  font-size: 18px;
+  cursor: pointer;
+  margin-right: 0;
+  padding-right: 0;
+}
+
+.toggleButton:hover {
+  background-color: #261e1eba;
+  padding: 5px 0;
+  color: white;
+}
+
+.options {
+  position: absolute;
+  right: 0;
+  top: 40px;
+  display: flex;
+  flex-direction: column;
+  background-color: #261e1eba;
+  border-radius: 5px;
+}
+
+.editButton, .deleteButton {
+  color: white;
+  background-color: #4CAF50;
+  border: none;
+  cursor: pointer;
+  width: 80%;
+}
+
+.deleteButton {
+  background-color: #f44336;
+}
+
+.editButton:hover {
+  background-color: #45a049;
+}
+
+.deleteButton:hover {
+  background-color: #e53935;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
+}
