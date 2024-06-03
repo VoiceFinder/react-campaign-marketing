@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../assets/styles/MarketManagePage.module.css';
+import styles from '../../assets/styles/MarketManagePage.module.css';
 
 const CampaignList = ({ campaigns, onCampaignClick, onCreateCampaign, page, totalPages, onPageChange }) => (
     <div className={styles.campaignSection}>

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import MarketService from '../services/MarketService';
-import CampaignService from '../services/CampaignService';
+import MarketService from '../../services/MarketService';
+import CampaignService from '../../services/CampaignService';
 import MarketInfo from './MarketInfo';
-import CampaignList from './CampaignList';
+import CampaignList from '../campaign/CampaignList';
 import MarketAnalytics from './MarketAnalytics';
-import styles from '../assets/styles/MarketManagePage.module.css';
+import styles from '../../assets/styles/MarketManagePage.module.css';
 
 function MarketManagePage() {
     const { marketId } = useParams();

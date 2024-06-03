@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styles from '../assets/styles/MarketInfo.module.css';
+import styles from '../../assets/styles/MarketInfo.module.css';
 import { FaEllipsisV } from 'react-icons/fa'; 
 
 

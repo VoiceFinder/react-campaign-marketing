@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import UserService from '../services/UserService';  
+import UserService from '../../services/UserService';  
 import { useNavigate } from 'react-router-dom';
-import styles from '../assets/styles/Profile.module.css'; 
-import defaultProfileImage from '../assets/images/default_profile_image.png';
+import styles from '../../assets/styles/Profile.module.css'; 
+import defaultProfileImage from '../../assets/images/default_profile_image.png';
 
 function Profile() {
     const [userInfo, setUserInfo] = useState(null);

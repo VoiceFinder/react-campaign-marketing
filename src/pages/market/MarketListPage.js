@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import MarketService from '../services/MarketService';
-import styles from '../assets/styles/MarketListPage.module.css';
+import MarketService from '../../services/MarketService';
+import styles from '../../assets/styles/MarketListPage.module.css';
 
 function MarketListPage() {
     const [markets, setMarkets] = useState([]);

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom'; 
-import AuthService from '../services/AuthService';
-import styles from '../assets/styles/RegisterPage.module.css'; // 스타일 시트 임포트
+import AuthService from '../../services/AuthService';
+import styles from '../../assets/styles/RegisterPage.module.css';
 
 function RegisterPage() {
     const [email, setEmail] = useState('');

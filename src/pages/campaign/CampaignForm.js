@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import CampaignService from '../services/CampaignService';
-import styles from '../assets/styles/CampaignForm.module.css';
+import CampaignService from '../../services/CampaignService';
+import styles from '../../assets/styles/CampaignForm.module.css';
 
 function CampaignForm() {
     const { marketId } = useParams();

@@ -1,0 +1,142 @@
+.campaignContainer {
+  max-width: 800px;
+  margin: 50px auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  background-color: white;
+  border-radius: 8px;
+}
+
+.searchContainer {
+  width: 50%;
+  min-width: 400px;
+  display: flex;
+  float: right;
+}
+
+.searchInput {
+  width: 80%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+  flex-basis: 70%;
+}
+
+.searchButton {
+  padding: 10px 20px;
+  margin-left: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  flex-basis: 10%;
+}
+
+.searchButton:hover {
+  background-color: #45a049;
+}
+
+.campaignSection {
+  clear: both;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.campaignList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.campaignCard {
+  flex: 1 1 calc(33% - 20px);
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  position: relative;
+}
+
+.campaignCard:hover {
+  transform: scale(1.05);
+}
+
+.campaignCard img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.campaignCard h4 {
+  margin: 10px 0 5px;
+}
+
+.campaignCard p {
+  margin: 5px 0;
+}
+
+.status {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 5px 10px;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+}
+
+.ongoing {
+  background-color: #4CAF50;
+}
+
+.ended {
+  background-color: #f44336;
+}
+
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20px;
+}
+
+.pageButton {
+  padding: 5px 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.pageButton:hover {
+  background-color: #45a049;
+}
+
+.pageButton:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+.createButton {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.createButton:hover {
+  background-color: #45a049;
+}

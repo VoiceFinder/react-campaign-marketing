@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import UserService from '../services/UserService';  
+import UserService from '../../services/UserService';  
 import { useNavigate } from 'react-router-dom';
-import styles from '../assets/styles/EditProfile.module.css';
+import styles from '../../assets/styles/EditProfile.module.css';
 
 function EditProfile() {
     const [userInfo, setUserInfo] = useState({

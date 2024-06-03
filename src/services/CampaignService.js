@@ -8,6 +8,17 @@ class CampaignService {
       return response.data;
     }
 
+    static async getCampaigns(page, size, keyword) {
+      const response = await axiosInstance.get(`/campaigns`, {
+          params: { page, size, keyword }
+      });
+      return response.data;
+    }
+
+    static async getTotalPages() {
+      const response = await axiosInstance.get(`/campaigns/totalPage`);
+      return response.data;
+    }
 
     static async createCampaign(formData) {
         const response = await axiosInstance.post(`/campaigns`, formData, {
@@ -30,6 +41,11 @@ class CampaignService {
         const response = await axiosInstance.get(`/campaigns/${campaignId}`);
         return response.data;
     }
+
+    static async getRecommendCampaigns() {
+      const response = await axiosInstance.get(`/campaigns/recommend`);
+      return response.data;
+  }
 }
 
 export default CampaignService;

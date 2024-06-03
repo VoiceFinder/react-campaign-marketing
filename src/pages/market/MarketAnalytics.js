@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../assets/styles/MarketManagePage.module.css';
+import styles from '../../assets/styles/MarketManagePage.module.css';
 
 const MarketAnalytics = () => (
     <div className={styles.analyticsSection}>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import CampaignService from '../services/CampaignService';
-import styles from '../assets/styles/CampaignDetail.module.css';
+import CampaignService from '../../services/CampaignService';
+import styles from '../../assets/styles/CampaignDetail.module.css';
 
 function CampaignDetail() {
     const { campaignId } = useParams();
