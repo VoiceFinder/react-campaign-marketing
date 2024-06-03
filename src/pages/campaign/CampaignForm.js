@@ -41,7 +41,7 @@ function CampaignForm() {
         try {
             await CampaignService.createCampaign(formData);
             alert('Campaign created successfully!');
-            navigate(`/market/${marketId}/manage`);
+            navigate(`/biz/market/${marketId}/manage`);
         } catch (error) {
             console.error('Failed to create campaign:', error);
             alert('Failed to create campaign.');

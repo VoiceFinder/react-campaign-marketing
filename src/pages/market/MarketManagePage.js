@@ -34,7 +34,7 @@ function MarketManagePage() {
     }, [marketId, page]);
 
     const handleEditMarket = () => {
-        navigate(`/market/${marketId}/edit`);
+        navigate(`/biz/market/${marketId}/edit`);
     };
 
     const handleDeleteMarket = async () => {
@@ -51,11 +51,11 @@ function MarketManagePage() {
     };
 
     const handleCreateCampaign = () => {
-        navigate(`/market/${marketId}/create-campaign`);
+        navigate(`/biz/market/${marketId}/create-campaign`);
     };
 
     const handleCampaignClick = (campaignId) => {
-        navigate(`/campaign/${campaignId}`);
+        navigate(`/biz/campaign/${campaignId}`);
     };
 
     const handlePageChange = (newPage) => {

@@ -21,11 +21,11 @@ function MarketListPage() {
     }, []);
 
     const handleRegisterMarket = () => {
-        navigate('/register-market');
+        navigate('/biz/register-market');
     };
 
     const handleMarketClick = (marketId) => {
-        navigate(`/market/${marketId}/manage`);
+        navigate(`/biz/market/${marketId}/manage`);
     };
 
     return (

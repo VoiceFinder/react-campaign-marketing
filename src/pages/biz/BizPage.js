@@ -28,11 +28,11 @@ function BizPage() {
     }, []);
 
     const handleMarketClick = (marketId) => {
-        navigate(`/market/${marketId}/manage`);
+        navigate(`/biz/market/${marketId}/manage`);
     };
 
     const handleCampaignClick = (campaignId) => {
-        navigate(`/campaign/${campaignId}`);
+        navigate(`/biz/campaign/${campaignId}`);
     };
 
     return (

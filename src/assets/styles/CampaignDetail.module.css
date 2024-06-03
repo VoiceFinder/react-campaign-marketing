@@ -7,7 +7,11 @@
   border-radius: 8px;
 }
 
-.marketInfo, .campaignInfo {
+.campaignInfo {
+  margin-bottom: 60px;
+}
+
+.marketInfo {
   margin-bottom: 20px;
 }
 
@@ -21,14 +25,34 @@ ul {
 }
 
 .images {
+  width: 30%;
+  float: right;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
 }
 
 .image {
-  max-width: 100px;
-  max-height: 100px;
+  width: 100%;
   border-radius: 4px;
   object-fit: cover;
+}
+
+
+.map {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 20px;
+}
+
+.keywords {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.keyword {
+  background-color: #eee;
+  border-radius: 8px;
+  padding: 5px 10px;
+  margin: 5px;
 }

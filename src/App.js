@@ -16,6 +16,7 @@ import MarketRegistrationForm from './pages/market/MarketRegistrationForm';
 import MarketListPage from './pages/market/MarketListPage';
 import MarketManagePage from './pages/market/MarketManagePage';
 import BizPage from './pages/biz/BizPage';
+import AboutPage from './pages/AboutPage';
 
 function App() {
   return (
@@ -57,15 +58,12 @@ function GeneralRoutes() {
       <Header />
       <Routes>
         <Route path="/" element={<HomePage />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/register" element={<RegisterPage />} />
         <Route path="/profile" element={<Profile />} />
         <Route path="/edit-profile" element={<EditProfile />} />
         <Route path="/campaigns" element={<CampaignListPage />} />
-        <Route path="/markets" element={<MarketListPage />} />
-        <Route path="/register-market" element={<MarketRegistrationForm />} />
-        <Route path="/market/:marketId/manage" element={<MarketManagePage />} />
-        <Route path="/market/:marketId/create-campaign" element={<CampaignForm />} />
         <Route path="/campaign/:campaignId" element={<CampaignDetail />} />
       </Routes>
     </>

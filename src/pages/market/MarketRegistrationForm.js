@@ -50,7 +50,7 @@ function MarketRegistrationForm() {
             console.log(formData);
             await MarketService.registerMarket(formData);
             alert('Market registered successfully!');
-            navigate('/markets');
+            navigate('/biz/markets');
         } catch (error) {
             console.error('Failed to register market:', error);
             alert('Failed to register market.');
@@ -81,7 +81,7 @@ function MarketRegistrationForm() {
                     }
                 }
 
-                setAddress(`${data.zonecode} ${addr} ${extraAddr}`);
+                setAddress(`${addr} ${extraAddr}`);
             }
         }).open();
     };
