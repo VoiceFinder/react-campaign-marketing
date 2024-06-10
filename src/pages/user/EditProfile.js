@@ -3,6 +3,12 @@ import UserService from '../../services/UserService';
 import { useNavigate } from 'react-router-dom';
 import styles from '../../assets/styles/EditProfile.module.css';
 
+const considerationOptions = [
+    '기타', '할인 및 프로모션', '거리', '주차의 편리함', '부대시설', '예약의 용이함', 
+    '교통의 편리성', '메뉴의 다양성', '음식의 양', '음식의 맛', '건강에 좋은 요리', 
+    '분위기', '서비스 정도', '가격 수준', '음식점의 청결도'
+];
+
 function EditProfile() {
     const [userInfo, setUserInfo] = useState({
         username: '',
@@ -12,22 +18,23 @@ function EditProfile() {
         blogUrl: '',
         bio: '',
         job: '',
-        interest: '',
         activityArea: '',
-        customJob: '',
-        customInterest: ''
+        considerations: [],
+        fav_foods: '',
+        cant_foods: ''
     });
-    const [imageFile, setImageFile] = useState(null)
+    const [imageFile, setImageFile] = useState(null);
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchUserInfo = async () => {
             try {
-              const data = await UserService.getUserInfo();
-              setUserInfo({
+                const data = await UserService.getUserInfo();
+                setUserInfo({
                     ...data,
-                    customJob: data.job || '',
-                    customInterest: data.interest || '',
+                    considerations: data.considerations || [],
+                    fav_foods: data.fav_foods ? data.fav_foods.join(', ') : '',
+                    cant_foods: data.cant_foods ? data.cant_foods.join(', ') : ''
                 });
             } catch (error) {
                 console.error('Failed to fetch user info:', error);
@@ -44,19 +51,50 @@ function EditProfile() {
         }));
     };
 
+    const handleConsiderationChange = (e) => {
+        const { options } = e.target;
+        const selectedOptions = [];
+        for (const option of options) {
+            if (option.selected) {
+                selectedOptions.push(option.value);
+            }
+        }
+
+        setUserInfo(prevState => {
+            let newConsiderations = [...prevState.considerations];
+
+            selectedOptions.forEach(option => {
+                if (newConsiderations.includes(option)) {
+                    newConsiderations = newConsiderations.filter(item => item !== option);
+                } else if (newConsiderations.length < 3) {
+                    newConsiderations.push(option);
+                }
+            });
+
+            return {
+                ...prevState,
+                considerations: newConsiderations
+            };
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
         const updateRequestDto = {};
         Object.keys(userInfo).forEach(key => {
-            updateRequestDto[key] = userInfo[key];  
+            if (['considerations', 'fav_foods', 'cant_foods'].includes(key)) {
+                updateRequestDto[key] = key === 'considerations' ? userInfo[key] : userInfo[key].split(',').map(item => item.trim());
+            } else {
+                updateRequestDto[key] = userInfo[key];
+            }
         });
-        formData.append('userData', new Blob([JSON.stringify(updateRequestDto)], {type: 'application/json'}))
+        formData.append('userData', new Blob([JSON.stringify(updateRequestDto)], {type: 'application/json'}));
         formData.append('imageUrl', imageFile);
       
         try {
-          await UserService.updateUserInfo(formData);  
-          navigate('/profile');
+            await UserService.updateUserInfo(formData);  
+            navigate('/profile');
         } catch (error) {
             console.error('Failed to update user info:', error);
         }
@@ -81,10 +119,10 @@ function EditProfile() {
                 <label>
                     Gender:
                     <select name="gender" value={userInfo.gender || ''} onChange={handleChange}>
-                      <option value="">Select Gender</option>
-                      <option value="Male">Male</option>
-                      <option value="Female">Female</option>
-                      <option value="Other">Other</option>
+                        <option value="">Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Other">Other</option>
                     </select>                
                 </label>
                 <label>
@@ -114,25 +152,31 @@ function EditProfile() {
                 </label>
                 <label>
                     Job:
-                    <select name="job" value={userInfo.job || ''} onChange={handleChange}>
-                        <option value="">Select job</option>
-                        <option value="Software Engineer">Software Engineer</option>
-                        <option value="Designer">Designer</option>
-                        <option value="Teacher">Teacher</option>
-                        <option value="Other">Other</option>
-                    </select>
-                    <input type="text" name="customJob" placeholder='직접입력' value={userInfo.customJob || ''} onChange={handleChange} />
+                    <input type="text" name="job" value={userInfo.job || ''} onChange={handleChange} />
                 </label>
                 <label>
-                    Interest:
-                    <select name="interest" value={userInfo.interest || ''} onChange={handleChange}>
-                        <option value="">Select interest</option>
-                        <option value="Programming">Programming</option>
-                        <option value="Design">Design</option>
-                        <option value="Education">Education</option>
-                        <option value="Other">Other</option>
+                    Considerations (Select up to 3):
+                    <select 
+                        name="considerations" 
+                        multiple 
+                        value={userInfo.considerations} 
+                        onChange={handleConsiderationChange} 
+                        className={styles.considerationsSelect}
+                    >
+                        {considerationOptions.map(option => (
+                            <option key={option} value={option}>
+                                {option}
+                            </option>
+                        ))}
                     </select>
-                    <input type="text" name="customInterest" placeholder='직접입력' value={userInfo.customInterest || ''} onChange={handleChange} />
+                </label>
+                <label>
+                    Favorite Foods:
+                    <input type="text" name="fav_foods" placeholder='comma separated' value={userInfo.fav_foods || ''} onChange={handleChange} />
+                </label>
+                <label>
+                    Foods You Can't Eat:
+                    <input type="text" name="cant_foods" placeholder='comma separated' value={userInfo.cant_foods || ''} onChange={handleChange} />
                 </label>
                 <button type="submit">Update Profile</button>
             </form>

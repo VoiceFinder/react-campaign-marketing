@@ -13,6 +13,7 @@ function MarketRegistrationForm() {
     const [detailAddress, setDetailAddress] = useState('');
     const [description, setDescription] = useState('');
     const [keywords, setKeywords] = useState('');
+    const [menus, setMenus] = useState('');
     const [fileNames, setFileNames] = useState([]);
     const navigate = useNavigate();
 
@@ -30,6 +31,7 @@ function MarketRegistrationForm() {
         e.preventDefault();
         const formData = new FormData();
         const keywordList = keywords.split(',').map(keyword => keyword.trim());
+        const menuList = menus.split(',').map(menu => menu.trim());
         const marketData = {
             companyName,
             businessType,
@@ -37,7 +39,8 @@ function MarketRegistrationForm() {
             address: address,
             detailAddress: detailAddress,
             description,
-            keywords: keywordList
+            keywords: keywordList,
+            menus: menuList
         };
 
         formData.append('marketData', new Blob([JSON.stringify(marketData)], { type: 'application/json' }));
@@ -123,6 +126,10 @@ function MarketRegistrationForm() {
                 <div className={styles.formGroup}>
                     <label htmlFor="keywords">Keywords (comma separated)</label>
                     <input type="text" value={keywords} onChange={(e) => setKeywords(e.target.value)} placeholder="Keywords (comma separated)" required />
+                </div>
+                <div className={styles.formGroup}>
+                    <label htmlFor="menus">Menus (comma separated)</label>
+                    <input type="text" value={menus} onChange={(e) => setMenus(e.target.value)} placeholder="Menus (comma separated)" required />
                 </div>
                 <div className={styles.formGroup}>
                     <label htmlFor="companyPhotos">Company Photos</label>

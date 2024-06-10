@@ -58,12 +58,12 @@
   background-color: #e53935;
 }
 
-.keywords {
-  display: flex;
-  flex-wrap: wrap;
+.keywords, .menus {
+  margin-top: 10px;
 }
 
-.keyword {
+.keyword, .menu {
+  display: inline-block;
   background-color: #eee;
   border-radius: 8px;
   padding: 5px 10px;

@@ -23,7 +23,7 @@ function Profile() {
 
     // 부가 정보 확인
     const isAdditionalInfoMissing = userInfo && (
-      !userInfo.gender || !userInfo.birthDate || !userInfo.blogUrl || !userInfo.bio || !userInfo.job || !userInfo.interest || !userInfo.activityArea
+      !userInfo.gender || !userInfo.birthDate || !userInfo.blogUrl || !userInfo.bio || !userInfo.job || !userInfo.activityArea || !userInfo.considerations || !userInfo.fav_foods || !userInfo.cant_foods
     );
 
     return (
@@ -39,15 +39,16 @@ function Profile() {
                     <p><strong>Blog:</strong> {userInfo.blogUrl || 'N/A'}</p>
                     <p><strong>Bio:</strong> {userInfo.bio || 'N/A'}</p>
                     <p><strong>Job:</strong> {userInfo.job || 'N/A'}</p>
-                    <p><strong>Interest:</strong> {userInfo.interest || 'N/A'}</p>
                     <p><strong>Activity Area:</strong> {userInfo.activityArea || 'N/A'}</p>
+                    <p><strong>Considerations:</strong> {userInfo.considerations ? userInfo.considerations.join(', ') : 'N/A'}</p>
+                    <p><strong>Favorite Foods:</strong> {userInfo.fav_foods ? userInfo.fav_foods.join(', ') : 'N/A'}</p>
+                    <p><strong>Foods You Can't Eat:</strong> {userInfo.cant_foods ? userInfo.cant_foods.join(', ') : 'N/A'}</p>
                     {isAdditionalInfoMissing && (
                         <div>
                             <p className={styles.alert}>Please update your additional information.</p>
                         </div>
                     )}
                     <button onClick={() => navigate('/edit-profile')} className={styles.editButton}>Edit Profile</button>
-
                 </div>
             ) : (
                 <p className={styles.loading}>Loading user information...</p>
