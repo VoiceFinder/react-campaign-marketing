@@ -20,7 +20,7 @@ function LoginPage() {
   };
 
   const handleSocialLogin = (social) => {
-    window.location.href = `http://localhost:8080/oauth2/authorization/${social}`;
+    window.location.href = `http://13.125.17.70:8080/oauth2/authorization/${social}`;
   };
 
   return (
