@@ -81,6 +81,9 @@
 
 .campaignCard p {
   margin: 5px 0;
+  display: inline-block;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .status {

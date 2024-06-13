@@ -3,23 +3,31 @@ import { useNavigate } from 'react-router-dom';
 import CampaignService from '../services/CampaignService';
 import styles from '../assets/styles/HomePage.module.css';
 import backgroundImg from '../assets/images/default_background_image.png';
+import { useAuth } from '../context/AuthContext';
+
 
 function HomePage() {
     const [campaigns, setCampaigns] = useState([]);
+    const { isAuthenticated } = useAuth();
     const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMarketAndCampaignDetails = async () => {
             try {
-                const campaignData = await CampaignService.getRecommendCampaigns();
-                setCampaigns(campaignData.content || []);
+              let campaignData;
+              if (isAuthenticated) {
+                  campaignData = await CampaignService.getRecommendCampaigns();
+              } else {
+                  campaignData = await CampaignService.getRecentCampaigns();
+              }                
+              setCampaigns(campaignData.content || []);
             } catch (error) {
                 console.error('Failed to fetch market and campaign details:', error);
             }
         };
 
         fetchMarketAndCampaignDetails();
-    }, []);
+    }, [isAuthenticated]);
 
     const handleInfoClick = () => {
       navigate(`/about`);

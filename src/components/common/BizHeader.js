@@ -17,8 +17,6 @@ function BizHeader() {
       <h2><Link to="/biz">Biz</Link></h2>
       <nav>
         <ul className={styles.navList}>
-          <li className={styles.navItem}><Link to="/" className={styles.navLink}>vf</Link></li>
-
           {isAuthenticated ? (
             <>
               <li className={styles.navItem}><Link to="/biz/markets" className={styles.navLink}>Markets</Link></li>

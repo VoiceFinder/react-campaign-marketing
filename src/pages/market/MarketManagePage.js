@@ -21,7 +21,7 @@ function MarketManagePage() {
                 const marketData = await MarketService.getMarketById(marketId);
                 setMarket(marketData);
 
-                const campaignData = await CampaignService.getCampaignsByMarketId(marketId, page, 2); // 2개씩 가져오기
+                const campaignData = await CampaignService.getCampaignsByMarketId(marketId, page, 4); // 4개씩 가져오기
                 setCampaigns(campaignData.content || []);
                 setTotalPages(campaignData.totalPages);
 

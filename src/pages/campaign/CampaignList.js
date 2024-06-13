@@ -1,5 +1,6 @@
 import React from 'react';
-import styles from '../../assets/styles/MarketManagePage.module.css';
+import styles from '../../assets/styles/CampaignListPage.module.css';
+import defaultImage from '../../assets/images/default_background_image.png';
 
 const CampaignList = ({ campaigns, onCampaignClick, onCreateCampaign, page, totalPages, onPageChange }) => (
     <div className={styles.campaignSection}>
@@ -7,7 +8,7 @@ const CampaignList = ({ campaigns, onCampaignClick, onCreateCampaign, page, tota
         <div className={styles.campaignList}>
             {campaigns.map((campaign) => (
                 <div key={campaign.id} className={styles.campaignCard} onClick={() => onCampaignClick(campaign.id)}>
-                    <img src={campaign.imageUrls[0] || 'default-image.png'} alt={campaign.title} />
+                    <img src={campaign.imageUrls[0] || defaultImage} alt={campaign.title} />
                     <h4>{campaign.title}</h4>
                     <p>{campaign.description}</p>
                     <p><strong>기간:</strong> {new Date(campaign.startDate).toLocaleDateString()} ~ {new Date(campaign.endDate).toLocaleDateString()}</p>

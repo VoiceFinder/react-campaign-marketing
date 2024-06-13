@@ -1,5 +1,12 @@
+.marketInfoCard {
+  margin-bottom: 20px;
+}
+
 .marketInfoCard img {
   width: 100%;
+  max-width: 200px;
+  height:fit-content;
+  border-radius: 5px;
 }
 
 .header {

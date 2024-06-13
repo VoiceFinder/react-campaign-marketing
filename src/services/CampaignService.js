@@ -45,7 +45,12 @@ class CampaignService {
     static async getRecommendCampaigns() {
       const response = await axiosInstance.get(`/campaigns/recommend`);
       return response.data;
-  }
+    }
+
+    static async getRecentCampaigns() {
+      const response = await axiosInstance.get(`/campaigns/recent`);
+      return response.data;
+    }
 }
 
 export default CampaignService;

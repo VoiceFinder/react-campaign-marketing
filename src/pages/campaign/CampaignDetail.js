@@ -1,17 +1,21 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import CampaignService from '../../services/CampaignService';
 import styles from '../../assets/styles/CampaignDetail.module.css';
 
 function CampaignDetail() {
     const { campaignId } = useParams();
     const [campaign, setCampaign] = useState(null);
+    const navigate = useNavigate();
+    const location = useLocation();
+    const [marketId, setMarketId] = useState(null); 
 
     useEffect(() => {
         const fetchCampaignDetails = async () => {
             try {
                 const data = await CampaignService.getCampaignById(campaignId);
                 setCampaign(data);
+                setMarketId(data.marketId); 
             } catch (error) {
                 console.error('Failed to fetch campaign details:', error);
             }
@@ -38,7 +42,6 @@ function CampaignDetail() {
         const geocoder = new kakao.maps.services.Geocoder();
 
         geocoder.addressSearch(address, (result, status) => {
-          console.log(address);
             if (status === kakao.maps.services.Status.OK) {
                 console.log("주소 검색", status);
                 const coords = new kakao.maps.LatLng(result[0].y, result[0].x);
@@ -53,7 +56,25 @@ function CampaignDetail() {
         });
     };
 
+    const handleEdit = () => {
+        navigate(`/biz/campaign/${campaignId}/edit`);
+    };
+
+    const handleDelete = async () => {
+        if (window.confirm('Are you sure you want to delete this campaign?')) {
+            try {
+                await CampaignService.deleteCampaign(campaignId);
+                alert('Campaign deleted successfully!');
+                navigate(`/biz/market/${marketId}/manage`);
+            } catch (error) {
+                console.error('Failed to delete campaign:', error);
+            }
+        }
+    };
+
     if (!campaign) return <div>Loading...</div>;
+
+    const isBizPage = location.pathname.startsWith('/biz');
 
     return (
         <div className={styles.detailContainer}>
@@ -80,6 +101,12 @@ function CampaignDetail() {
                 <p><strong>Address:</strong> {campaign.address} {campaign.detailAddress}</p>
             </div>
             <div id="map" className={styles.map}></div>
+            {isBizPage && (
+                <div className={styles.buttonContainer}>
+                    <button onClick={handleEdit} className={styles.editButton}>Edit</button>
+                    <button onClick={handleDelete} className={styles.deleteButton}>Delete</button>
+                </div>
+            )}
         </div>
     );
 }

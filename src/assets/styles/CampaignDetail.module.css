@@ -56,3 +56,31 @@ ul {
   padding: 5px 10px;
   margin: 5px;
 }
+
+.buttonContainer {
+  width: 200px;
+  margin-top: 20px;
+  float: right;
+  display: flex;
+  justify-content: space-between;
+}
+
+.editButton, .deleteButton {
+  width: 60px;
+  padding: 10px 5px;
+  font-size: 16px;
+  background-color: #2b4058;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+}
+
+.editButton:hover {
+  background-color: #15202d;
+  color: white;
+}
+
+.deleteButton:hover {
+  background-color: #f44336;
+  color: white;
+}
