@@ -25,9 +25,13 @@ function CampaignDetail() {
     }, [campaignId]);
 
     useEffect(() => {
-        if (campaign && window.kakao && window.kakao.maps) {
-            displayMap(campaign.address);
-        }
+      if (campaign && window.kakao && window.kakao.maps) {
+        const mapScript = document.createElement('script');
+        mapScript.async = true;
+        mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_API_KEY}&libraries=services`;
+        mapScript.onload = () => displayMap(campaign.address);
+        document.head.appendChild(mapScript);
+      }
     }, [campaign]);
 
     const displayMap = (address) => {
