@@ -36,6 +36,7 @@ function CampaignDetail() {
     }, [campaign]);
 
     const displayMap = (address) => {
+      if (window.kakao && window.kakao.maps) {
         const { kakao } = window;
         const mapContainer = document.getElementById('map');
         const mapOption = {
@@ -59,6 +60,7 @@ function CampaignDetail() {
               console.error("주소 검색 실패:", status);
             }
         });
+      }
     };
 
     const handleEdit = () => {
