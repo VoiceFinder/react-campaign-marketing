@@ -25,13 +25,14 @@ function CampaignDetail() {
     }, [campaignId]);
 
     useEffect(() => {
-      if (campaign && window.kakao && window.kakao.maps) {
-        const mapScript = document.createElement('script');
-        mapScript.async = true;
-        mapScript.src = `//dapi.kakao.com/v2/maps/sdk.js?appkey=${process.env.REACT_APP_KAKAO_API_KEY}&libraries=services`;
-        mapScript.onload = () => displayMap(campaign.address);
-        document.head.appendChild(mapScript);
-      }
+        if (campaign && window.kakao && window.kakao.maps) {
+            const mapContainer = document.getElementById('map');
+            if (mapContainer) {
+                mapContainer.style.width = '100%';
+                mapContainer.style.height = '400px'; // 원하는 높이로 설정
+                displayMap(campaign.address);
+            }
+        }
     }, [campaign]);
 
     const displayMap = (address) => {
