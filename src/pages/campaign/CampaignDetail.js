@@ -33,38 +33,40 @@ function CampaignDetail() {
     document.head.appendChild(mapScript);
 
     const onLoadKakaoMap = () => {
-      window.kakao.maps.load(() => {
-        const mapContainer = document.getElementById('map');
-        if (mapContainer) {
-          const mapOption = {
-            center: new window.kakao.maps.LatLng(37.5665, 126.9780), // Default center (Seoul)
-            level: 3
-          };
-          const map = new window.kakao.maps.Map(mapContainer, mapOption);
-          const geocoder = new window.kakao.maps.services.Geocoder();
+      if (campaign) {
+        window.kakao.maps.load(() => {
+          const mapContainer = document.getElementById('map');
+          if (mapContainer) {
+            const mapOption = {
+              center: new window.kakao.maps.LatLng(37.5665, 126.9780), // Default center (Seoul)
+              level: 3
+            };
+            const map = new window.kakao.maps.Map(mapContainer, mapOption);
+            const geocoder = new window.kakao.maps.services.Geocoder();
 
-          geocoder.addressSearch(campaign.address, (result, status) => {
-            if (status === window.kakao.maps.services.Status.OK) {
-              console.log("주소 검색", status);
-              const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
-              new window.kakao.maps.Marker({
-                map: map,
-                position: coords
-              });
-              map.setCenter(coords);
-            } else {
-              console.error("주소 검색 실패:", status);
-            }
-          });
-        }
-      });
-    };
+            geocoder.addressSearch(campaign.address, (result, status) => {
+              if (status === window.kakao.maps.services.Status.OK) {
+                console.log("주소 검색", status);
+                const coords = new window.kakao.maps.LatLng(result[0].y, result[0].x);
+                new window.kakao.maps.Marker({
+                  map: map,
+                  position: coords
+                });
+                map.setCenter(coords);
+              } else {
+                console.error("주소 검색 실패:", status);
+              }
+            });
+          }
+        });
+      };
 
-    mapScript.addEventListener('load', onLoadKakaoMap);
+      mapScript.addEventListener('load', onLoadKakaoMap);
 
-    return () => {
-      mapScript.removeEventListener('load', onLoadKakaoMap);
-    };
+      return () => {
+        mapScript.removeEventListener('load', onLoadKakaoMap);
+      };
+    }
   }, [campaign]);
 
   const handleEdit = () => {
