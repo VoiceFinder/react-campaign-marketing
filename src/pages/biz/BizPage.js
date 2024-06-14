@@ -36,7 +36,7 @@ function BizPage() {
     };
 
     const handleCreateMarketClick = () => {
-      navigate(`/biz/market/register-market`);
+      navigate(`/biz/register-market`);
   };
 
     return (
