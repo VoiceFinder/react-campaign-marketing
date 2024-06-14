@@ -51,7 +51,7 @@ function BizPage() {
                 </div>
             ) : (
                 <div className={styles.marketInfo}>
-                    <img src={backgroundImg} alt="background" className={styles.marketImage} />
+                    <img src={backgroundImg} alt="background" className={styles.marketImage} onClick={() => handleCreateMarketClick()}/>
                 </div>
             )}
 
