@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import CampaignService from '../services/CampaignService';
 import styles from '../assets/styles/HomePage.module.css';
 import backgroundImg from '../assets/images/eventBg.png';
+import bizImg from '../assets/images/bizBg.png';
 import { useAuth } from '../context/AuthContext';
 
 
@@ -74,7 +75,7 @@ function HomePage() {
             </div>
 
             <div className={styles.bizInfo} onClick={handleBizInfoClick}>
-                <img src={backgroundImg} alt="backgroundImg" className={styles.backgroundImage} />
+                <img src={bizImg} alt="bizImg" className={styles.backgroundImage} />
                 <div className={styles.Overlay}>
                     <h1>광고를 원하시나요?</h1>
                     <p>지금 Biz페이지로 이동해보세요!</p>
