@@ -20,7 +20,7 @@ function LoginPage() {
   };
 
   const handleSocialLogin = (social) => {
-    window.location.href = `https://www.voicefinder.kr/oauth2/authorization/${social}`;
+    window.location.href = `https://www.voicefinder.kr/login/oauth2/authorization/${social}`;
   };
 
   return (
