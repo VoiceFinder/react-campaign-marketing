@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import MarketService from '../../services/MarketService';
 import CampaignService from '../../services/CampaignService';
 import styles from '../../assets/styles/BizPage.module.css';
-import backgroundImg from '../../assets/images/default_background_image.png';
+import backgroundImg from '../../assets/images/bizBg.png';
 
 function BizPage() {
     const [market, setMarket] = useState(null);
@@ -35,6 +35,10 @@ function BizPage() {
         navigate(`/biz/campaign/${campaignId}`);
     };
 
+    const handleCreateMarketClick = () => {
+      navigate(`/biz/market/register-market`);
+  };
+
     return (
         <div className={styles.homeContainer}>
             {market ? (
@@ -46,7 +50,13 @@ function BizPage() {
                     </div>
                 </div>
             ) : (
-                <p>Market information is not available.</p>
+                <div className={styles.marketInfo}>
+                    <img src={backgroundImg} alt="background" className={styles.marketImage} />
+                    <div className={styles.marketOverlay}>
+                        <p>Market information is not available.</p>
+                        <p onClick={() => handleCreateMarketClick()}>마켓을 등록해주세요</p>
+                    </div>
+                </div>
             )}
 
             <div className={styles.campaignSection}>

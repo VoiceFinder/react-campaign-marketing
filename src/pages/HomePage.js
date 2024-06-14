@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CampaignService from '../services/CampaignService';
 import styles from '../assets/styles/HomePage.module.css';
-import backgroundImg from '../assets/images/default_background_image.png';
+import backgroundImg from '../assets/images/eventBg.png';
 import { useAuth } from '../context/AuthContext';
 
 
