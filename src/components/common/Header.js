@@ -14,7 +14,7 @@ function Header() {
 
   return (
     <header className={styles.header}>
-      <h2><Link to="/">Home</Link></h2>
+      <h2><Link to="/">VoiceFinder</Link></h2>
       <nav>
         <ul className={styles.navList}>
           {isAuthenticated ? (

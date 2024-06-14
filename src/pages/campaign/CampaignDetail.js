@@ -59,14 +59,14 @@ function CampaignDetail() {
             });
           }
         });
-      };
+      }
+    };
 
-      mapScript.addEventListener('load', onLoadKakaoMap);
+    mapScript.addEventListener('load', onLoadKakaoMap);
 
-      return () => {
-        mapScript.removeEventListener('load', onLoadKakaoMap);
-      };
-    }
+    return () => {
+      mapScript.removeEventListener('load', onLoadKakaoMap);
+    };
   }, [campaign]);
 
   const handleEdit = () => {
