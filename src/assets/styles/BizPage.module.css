@@ -20,6 +20,13 @@
   border-radius: 10px;
 }
 
+@media (max-width: 768px) {
+  .marketImage {
+    max-height: 300px; /* 모바일 화면에서 최대 높이 제한 */
+    object-fit: contain; /* contain으로 변경하여 이미지가 잘리지 않도록 */
+  }
+}
+
 .marketOverlay {
   position: absolute;
   top: 0;

@@ -40,3 +40,15 @@
 .editButton {
   margin: 10px 0;
 }
+
+
+/* 모바일에서 레이아웃 변경 */
+@media (max-width: 768px) {
+  .mainContent {
+    flex-direction: column;
+  }
+  .marketInfoSection {
+    margin-right: 0;
+    margin-bottom: 20px;
+  }
+}
