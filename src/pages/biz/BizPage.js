@@ -52,10 +52,6 @@ function BizPage() {
             ) : (
                 <div className={styles.marketInfo}>
                     <img src={backgroundImg} alt="background" className={styles.marketImage} />
-                    <div className={styles.marketOverlay}>
-                        <p>Market information is not available.</p>
-                        <p onClick={() => handleCreateMarketClick()}>마켓을 등록해주세요</p>
-                    </div>
                 </div>
             )}
 

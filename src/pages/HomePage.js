@@ -44,10 +44,6 @@ function HomePage() {
         <div className={styles.homeContainer}>
             <div className={styles.info} onClick={handleInfoClick}>
                 <img src={backgroundImg} alt="backgroundImg" className={styles.backgroundImage} />
-                <div className={styles.Overlay}>
-                    <h1>Welcome to VoiceFinder</h1>
-                    <p>캠페인에 참여하고 혜택 받자!</p>
-                </div>
             </div>
     
 
@@ -76,10 +72,6 @@ function HomePage() {
 
             <div className={styles.bizInfo} onClick={handleBizInfoClick}>
                 <img src={bizImg} alt="bizImg" className={styles.backgroundImage} />
-                <div className={styles.Overlay}>
-                    <h1>광고를 원하시나요?</h1>
-                    <p>지금 Biz페이지로 이동해보세요!</p>
-                </div>
             </div>
         </div>
     );
