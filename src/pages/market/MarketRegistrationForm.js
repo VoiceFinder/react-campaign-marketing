@@ -18,13 +18,14 @@ function MarketRegistrationForm() {
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
-        const { name, files } = e.target;
+        // const { name, files } = e.target;
         // if (name === "businessCertificate") {
         //     setBusinessCertificate(files[0]);
         // } else if (name === "companyPhotos") {
         //     setCompanyPhotos(Array.from(files));
         //     setFileNames(Array.from(files).map(file => file.name));
         // }
+        const { files } = e.target;
         setCompanyPhotos(Array.from(files));
         setFileNames(Array.from(files).map(file => file.name));
     };
