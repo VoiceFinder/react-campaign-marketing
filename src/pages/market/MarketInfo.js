@@ -28,12 +28,12 @@ function MarketInfo({ market, onEdit, onDelete }) {
             <p><strong>Phone:</strong> {market.phone}</p>
             <p><strong>Address:</strong> {market.address} {market.detailAddress}</p>
             <p><strong>Description:</strong> {market.description}</p>
-            <div className={styles.keywords}>
+            {/* <div className={styles.keywords}>
                 <p><strong>Keywords:</strong></p>
                 {market.keywords && market.keywords.map((keyword, index) => (
                     <span key={index} className={styles.keyword}>{keyword}</span>
                 ))}
-            </div>
+            </div> */}
             <div className={styles.menus}>
                 <p><strong>Menus:</strong></p>
                 {market.menus && market.menus.map((menu, index) => (

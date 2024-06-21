@@ -4,7 +4,7 @@ import MarketService from '../../services/MarketService';
 import styles from '../../assets/styles/MarketRegistrationForm.module.css';
 
 function MarketRegistrationForm() {
-    const [businessCertificate, setBusinessCertificate] = useState(null);
+    // const [businessCertificate, setBusinessCertificate] = useState(null);
     const [companyName, setCompanyName] = useState('');
     const [businessType, setBusinessType] = useState('');
     const [companyPhotos, setCompanyPhotos] = useState([]);
@@ -12,25 +12,27 @@ function MarketRegistrationForm() {
     const [address, setAddress] = useState('');
     const [detailAddress, setDetailAddress] = useState('');
     const [description, setDescription] = useState('');
-    const [keywords, setKeywords] = useState('');
+    // const [keywords, setKeywords] = useState('');
     const [menus, setMenus] = useState('');
     const [fileNames, setFileNames] = useState([]);
     const navigate = useNavigate();
 
     const handleFileChange = (e) => {
         const { name, files } = e.target;
-        if (name === "businessCertificate") {
-            setBusinessCertificate(files[0]);
-        } else if (name === "companyPhotos") {
-            setCompanyPhotos(Array.from(files));
-            setFileNames(Array.from(files).map(file => file.name));
-        }
+        // if (name === "businessCertificate") {
+        //     setBusinessCertificate(files[0]);
+        // } else if (name === "companyPhotos") {
+        //     setCompanyPhotos(Array.from(files));
+        //     setFileNames(Array.from(files).map(file => file.name));
+        // }
+        setCompanyPhotos(Array.from(files));
+        setFileNames(Array.from(files).map(file => file.name));
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         const formData = new FormData();
-        const keywordList = keywords.split(',').map(keyword => keyword.trim());
+        // const keywordList = keywords.split(',').map(keyword => keyword.trim());
         const menuList = menus.split(',').map(menu => menu.trim());
         const marketData = {
             companyName,
@@ -39,12 +41,12 @@ function MarketRegistrationForm() {
             address: address,
             detailAddress: detailAddress,
             description,
-            keywords: keywordList,
+            // keywords: keywordList,
             menus: menuList
         };
 
         formData.append('marketData', new Blob([JSON.stringify(marketData)], { type: 'application/json' }));
-        formData.append('businessCertificate', businessCertificate);
+        // formData.append('businessCertificate', businessCertificate);
         companyPhotos.forEach(photo => {
             formData.append('companyPhotos', photo);
         });
@@ -93,10 +95,10 @@ function MarketRegistrationForm() {
         <div className={styles.registrationFormContainer}>
             <h2>Register Your Market</h2>
             <form onSubmit={handleSubmit}>
-                <div className={styles.formGroup}>
+                {/* <div className={styles.formGroup}>
                     <label htmlFor="businessCertificate">Business Certificate</label>
                     <input type="file" name="businessCertificate" onChange={handleFileChange} required />
-                </div>
+                </div> */}
                 <div className={styles.formGroup}>
                     <label htmlFor="companyName">Company Name</label>
                     <input type="text" value={companyName} onChange={(e) => setCompanyName(e.target.value)} placeholder="Company Name" required />
@@ -123,10 +125,10 @@ function MarketRegistrationForm() {
                     <label htmlFor="description">Description</label>
                     <textarea value={description} onChange={(e) => setDescription(e.target.value)} placeholder="Description" required />
                 </div>
-                <div className={styles.formGroup}>
+                {/* <div className={styles.formGroup}>
                     <label htmlFor="keywords">Keywords (comma separated)</label>
                     <input type="text" value={keywords} onChange={(e) => setKeywords(e.target.value)} placeholder="Keywords (comma separated)" required />
-                </div>
+                </div> */}
                 <div className={styles.formGroup}>
                     <label htmlFor="menus">Menus (comma separated)</label>
                     <input type="text" value={menus} onChange={(e) => setMenus(e.target.value)} placeholder="Menus (comma separated)" required />

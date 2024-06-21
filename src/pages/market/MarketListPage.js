@@ -39,11 +39,11 @@ function MarketListPage() {
                             <p><strong>Business Type:</strong> {market.businessType}</p>
                             <p><strong>Address:</strong> {market.address} {market.detailAdress}</p>
                             <p><strong>Description:</strong> {market.description}</p>
-                            <div className={styles.keywords}>
+                            {/* <div className={styles.keywords}>
                                 {market.keywords.map((keyword, index) => (
                                     <span key={index} className={styles.keyword}>{keyword}</span>
                                 ))}
-                            </div>
+                            </div> */}
                         </div>
                     ))}
                 </div>
