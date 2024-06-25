@@ -4,6 +4,7 @@ import MarketService from '../../services/MarketService';
 import CampaignService from '../../services/CampaignService';
 import styles from '../../assets/styles/BizPage.module.css';
 import backgroundImg from '../../assets/images/bizBg.png';
+import defaultImg from '../../assets/images/default_background_image.png';
 
 function BizPage() {
     const [market, setMarket] = useState(null);
@@ -61,7 +62,7 @@ function BizPage() {
                     {campaigns.length > 0 ? (
                         campaigns.map((campaign) => (
                             <div key={campaign.id} className={styles.campaignCard} onClick={() => handleCampaignClick(campaign.id)}>
-                                <img src={(campaign.imageUrls && campaign.imageUrls[0]) || backgroundImg} alt={campaign.title} className={styles.campaignImage} />
+                                <img src={(campaign.imageUrls && campaign.imageUrls[0]) || defaultImg} alt={campaign.title} className={styles.campaignImage} />
                                 <div className={styles.campaignData}>
                                     <h3>{campaign.title}</h3>
                                     <p>{campaign.description}</p>

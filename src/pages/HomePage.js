@@ -4,6 +4,7 @@ import CampaignService from '../services/CampaignService';
 import styles from '../assets/styles/HomePage.module.css';
 import backgroundImg from '../assets/images/eventBg.png';
 import bizImg from '../assets/images/bizBg.png';
+import defaultImg from '../assets/images/default_background_image.png';
 import { useAuth } from '../context/AuthContext';
 
 
@@ -53,9 +54,9 @@ function HomePage() {
                     {campaigns.length > 0 ? (
                         campaigns.map((campaign) => (
                             <div key={campaign.id} className={styles.campaignCard} onClick={() => handleCampaignClick(campaign.id)}>
+                                <img src={(campaign.imageUrls && campaign.imageUrls[0]) || defaultImg} alt={campaign.title} className={styles.campaignImage} />
                                 <div className={styles.campaignData}>
-                                    <img src={(campaign.imageUrls && campaign.imageUrls[0]) || backgroundImg} alt={campaign.title} className={styles.campaignImage} />
-                                    <h4>{campaign.marketName}</h4>
+                                    <h3>{campaign.marketName}</h3>
                                     <p>{campaign.title}</p>
                                     <p><strong>기간:</strong> {new Date(campaign.startDate).toLocaleDateString()} ~ {new Date(campaign.endDate).toLocaleDateString()}</p>
                                     <div className={`${styles.status} ${new Date(campaign.endDate) > new Date() ? styles.ongoing : styles.ended}`}>

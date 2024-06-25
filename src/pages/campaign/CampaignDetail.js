@@ -114,10 +114,14 @@ function CampaignDetail() {
         <p><strong>Address:</strong> {campaign.address} {campaign.detailAddress}</p>
       </div>
       <div id="map" className={styles.map}></div>
-      {isBizPage && (
+      {isBizPage ? (
         <div className={styles.buttonContainer}>
           <button onClick={handleEdit} className={styles.editButton}>Edit</button>
           <button onClick={handleDelete} className={styles.deleteButton}>Delete</button>
+        </div>
+      ) : (
+        <div className={styles.buttonContainer}>
+          <button className={styles.joinButton}>참여하기</button>
         </div>
       )}
     </div>
